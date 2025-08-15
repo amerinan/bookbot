@@ -2,7 +2,7 @@ def get_num_words(content):
     count = 0
     for word in content.split():
         count += 1
-    print(f"{count} words found in the document")
+    return count
 
 def get_num_chars(content):
     chars = {}
@@ -14,5 +14,15 @@ def get_num_chars(content):
     return chars
 
 def get_report(content):
-    content = content.sort()
-    print(content)
+
+    for item in content:
+        print(f"{item['char']}: {item['num']}")
+   
+def dict_to_list(content):    
+    unsorted_list = []
+    
+    for char in content:
+        unsorted_list.append({"char": char, "num": content[char]})
+    unsorted_list.sort(reverse=True, key=lambda x: x["num"])
+    
+    return unsorted_list  
